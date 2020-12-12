@@ -5,18 +5,19 @@ namespace RoboWalk
 {
     public class Room : IRoom
     {
-        private readonly char[,] _floor;
+        private readonly int _width;
+        private readonly int _height;
 
         public Room(int width, int height)
         {
-            _floor = new char[Math.Abs(width), Math.Abs(height)];
-            _floor.Initialize();
+            _width = Math.Abs(width);
+            _height = Math.Abs(height);
         }
         
         public bool IsPositionWithinBoundary(int x, int y)
         {
-            return x >= 0 && x <= _floor.GetLength(0) - 1 &&
-                   y >= 0 && y <= _floor.GetLength(1) - 1;
+            return x >= 0 && x <= _width - 1 &&
+                   y >= 0 && y <= _height - 1;
         }
     }
 }
