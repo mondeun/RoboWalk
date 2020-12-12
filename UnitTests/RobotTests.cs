@@ -54,11 +54,37 @@ namespace UnitTests
         }
         
         [Fact]
+        public void ProcessCommand_WithNoCollision_ContainsBadInput()
+        {
+            _sut = Substitute.For<Robot>(_room);
+            _sut.SetPosition(1, 1, Direction.N);
+            const string query = "FRF RFsR64FFLFLR";
+            const string expected = "Report: 0 2 S";
+
+            var result = _sut.ProcessCommands(query);
+            
+            Assert.Equal(expected, result);
+        }
+        
+        [Fact]
         public void ProcessCommand_WithCollision()
         {
             _sut = Substitute.For<Robot>(_room);
             _sut.SetPosition(1, 1, Direction.N);
             const string query = "FFLFLF";
+            const string expected = "Report: 0 1 S";
+
+            var result = _sut.ProcessCommands(query);
+            
+            Assert.Equal(expected, result);
+        }
+        
+        [Fact]
+        public void ProcessCommand_WithCollision_ContainsBadInput()
+        {
+            _sut = Substitute.For<Robot>(_room);
+            _sut.SetPosition(1, 1, Direction.N);
+            const string query = "Fssssss  dssadsadsadsFLFLF";
             const string expected = "Report: 0 1 S";
 
             var result = _sut.ProcessCommands(query);
