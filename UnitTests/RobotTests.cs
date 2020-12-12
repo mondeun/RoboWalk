@@ -45,8 +45,8 @@ namespace UnitTests
         {
             _sut = Substitute.For<Robot>(_room);
             _sut.SetPosition(1, 1, Direction.N);
-            var query = "FRFRFRFFLFLR";
-            var expected = "Report: 0 2 S";
+            const string query = "FRFRFRFFLFLR";
+            const string expected = "Report: 0 2 S";
 
             var result = _sut.ProcessCommands(query);
             
@@ -58,8 +58,8 @@ namespace UnitTests
         {
             _sut = Substitute.For<Robot>(_room);
             _sut.SetPosition(1, 1, Direction.N);
-            var query = "FFLFLF";
-            var expected = "Report: 0 1 S";
+            const string query = "FFLFLF";
+            const string expected = "Report: 0 1 S";
 
             var result = _sut.ProcessCommands(query);
             
