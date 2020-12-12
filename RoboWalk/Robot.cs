@@ -46,8 +46,6 @@ namespace RoboWalk
                         WalkForward();
                         break;
                 }
-                
-                Console.WriteLine($"{_x} {_y} {_orientation}");
             }
 
             return $"Report: {_x} {_y} {_orientation}";
