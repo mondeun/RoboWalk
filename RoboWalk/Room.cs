@@ -1,4 +1,5 @@
-﻿using RoboWalk.Interfaces;
+﻿using System;
+using RoboWalk.Interfaces;
 
 namespace RoboWalk
 {
@@ -8,13 +9,14 @@ namespace RoboWalk
 
         public Room(int width, int height)
         {
-            _floor = new char[width, height];
+            _floor = new char[Math.Abs(width), Math.Abs(height)];
             _floor.Initialize();
         }
         
         public bool IsPositionWithinBoundary(int x, int y)
         {
-            throw new System.NotImplementedException();
+            return x >= 0 && x <= _floor.GetLength(0) - 1 &&
+                   y >= 0 && y <= _floor.GetLength(1) - 1;
         }
     }
 }

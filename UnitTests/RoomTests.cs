@@ -10,7 +10,7 @@ namespace UnitTests
         private IRoom _sut;
 
         [Theory]
-        [InlineData(1, 1, 1, 1)]
+        [InlineData(1, 1, 0, 0)]
         [InlineData(2, 2, 1, 1)]
         [InlineData(5, 5, 3, 3)]
         public void CheckIfMoveIsPossible_isOk(int w, int h, int x, int y)
