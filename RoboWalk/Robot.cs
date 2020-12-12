@@ -9,11 +9,13 @@ namespace RoboWalk
         private int _x;
         private int _y;
         private Direction _orientation;
+        private bool _isPositioned;
         private readonly IRoom _room;
 
         public Robot(IRoom room)
         {
             _room = room;
+            _isPositioned = false;
         }
         
         public bool SetPosition(int x, int y, Direction orientation)
@@ -23,6 +25,7 @@ namespace RoboWalk
                 _x = x;
                 _y = y;
                 _orientation = orientation;
+                _isPositioned = true;
 
                 return true;
             }
@@ -32,6 +35,9 @@ namespace RoboWalk
 
         public string ProcessCommands(string query)
         {
+            if (!_isPositioned)
+                return "Set robot's position first";
+            
             foreach (var command in query.ToUpper().AsEnumerable())
             {
                 switch (command)

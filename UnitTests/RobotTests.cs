@@ -91,5 +91,17 @@ namespace UnitTests
             
             Assert.Equal(expected, result);
         }
+        
+        [Fact]
+        public void ProcessCommand_NoPositionGiven_WillInform()
+        {
+            _sut = Substitute.For<Robot>(_room);
+            const string query = "FRFRFRFFLFLR";
+            const string expected = "Set robot's position first";
+
+            var result = _sut.ProcessCommands(query);
+            
+            Assert.Equal(expected, result);
+        }
     }
 }
