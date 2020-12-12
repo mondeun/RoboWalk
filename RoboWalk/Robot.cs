@@ -32,7 +32,7 @@ namespace RoboWalk
 
         public string ProcessCommands(string query)
         {
-            foreach (var command in query.AsEnumerable())
+            foreach (var command in query.ToUpper().AsEnumerable())
             {
                 switch (command)
                 {
